@@ -63,6 +63,7 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   void _showCupertinoDatePicker() {
+    final isTablet = context.isTablet;
     showModalBottomSheet(
       context: context,
       //showDragHandle: true,
@@ -81,7 +82,7 @@ class _CreateScreenState extends State<CreateScreen> {
               Text(
                 'Choose your birthday',
                 style: GoogleFonts.inter(
-                  fontSize: context.isTablet ? 8.sp : 16.sp,
+                  fontSize: isTablet ? 8.sp : 16.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
@@ -94,7 +95,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   data: CupertinoThemeData(
                     textTheme: CupertinoTextThemeData(
                       dateTimePickerTextStyle: TextStyle(
-                        fontSize: context.isTablet ? 7.sp : 14.sp,
+                        fontSize: isTablet ? 7.sp : 14.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                       ),
@@ -263,14 +264,13 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   Widget createAccountPage() {
+    final isTablet = context.isTablet;
     return Center(
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.isTablet ? 0.w : 16.w,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: isTablet ? 0.w : 16.w),
         child: Container(
-          width: context.isTablet ? 412.w : double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: context.isTablet ? 70.w : 0),
+          width: isTablet ? 412.w : double.infinity,
+          margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 0.w),
           decoration: BoxDecoration(
             //color: Colors.white,
             borderRadius: BorderRadius.circular(12.r),
@@ -286,7 +286,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 child: Text(
                   'Create Account!',
                   style: GoogleFonts.inter(
-                    fontSize: context.isTablet ? 11.sp : 22.sp,
+                    fontSize: isTablet ? 11.sp : 22.sp,
                     fontWeight: FontWeight.w700,
                     color: Colors.black,
                   ),
@@ -298,7 +298,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   'Create new an account to get started and enjoy\n seamless access to our features.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inter(
-                    fontSize: context.isTablet ? 6.sp : 12.sp,
+                    fontSize: isTablet ? 6.sp : 12.sp,
                     color: Colors.grey.shade500,
                   ),
                 ),
@@ -309,7 +309,7 @@ class _CreateScreenState extends State<CreateScreen> {
               Text(
                 'Full Name',
                 style: GoogleFonts.roboto(
-                  fontSize: context.isTablet ? 7.sp : 14.sp,
+                  fontSize: isTablet ? 7.sp : 14.sp,
                   color: Colors.grey.shade700,
                 ),
               ),
@@ -319,11 +319,11 @@ class _CreateScreenState extends State<CreateScreen> {
               TextField(
                 controller: nameController,
                 keyboardType: TextInputType.name,
-                style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                 decoration: InputDecoration(
                   hintText: 'Full Name',
                   hintStyle: TextStyle(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade500,
                   ),
                   prefixIcon: Icon(
@@ -348,7 +348,7 @@ class _CreateScreenState extends State<CreateScreen> {
               Text(
                 'Email or Phone Number',
                 style: GoogleFonts.roboto(
-                  fontSize: context.isTablet ? 7.sp : 14.sp,
+                  fontSize: isTablet ? 7.sp : 14.sp,
                   color: Colors.grey.shade700,
                 ),
               ),
@@ -358,11 +358,11 @@ class _CreateScreenState extends State<CreateScreen> {
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                 decoration: InputDecoration(
                   hintText: 'Email or Phone number',
                   hintStyle: TextStyle(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade500,
                   ),
                   prefixIcon: Icon(
@@ -388,7 +388,7 @@ class _CreateScreenState extends State<CreateScreen> {
               Text(
                 'Password',
                 style: GoogleFonts.roboto(
-                  fontSize: context.isTablet ? 7.sp : 14.sp,
+                  fontSize: isTablet ? 7.sp : 14.sp,
                   color: Colors.grey.shade700,
                 ),
               ),
@@ -401,11 +401,11 @@ class _CreateScreenState extends State<CreateScreen> {
                   return TextField(
                     controller: passwordController,
                     obscureText: isObscured,
-                    style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                    style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                     decoration: InputDecoration(
                       hintText: 'Password',
                       hintStyle: TextStyle(
-                        fontSize: context.isTablet ? 7.sp : 14.sp,
+                        fontSize: isTablet ? 7.sp : 14.sp,
                         color: Colors.grey.shade500,
                       ),
                       prefixIcon: Icon(
@@ -443,7 +443,7 @@ class _CreateScreenState extends State<CreateScreen> {
               Text(
                 'Confirm Password',
                 style: GoogleFonts.roboto(
-                  fontSize: context.isTablet ? 7.sp : 14.sp,
+                  fontSize: isTablet ? 7.sp : 14.sp,
                   color: Colors.grey.shade700,
                 ),
               ),
@@ -456,11 +456,11 @@ class _CreateScreenState extends State<CreateScreen> {
                   return TextField(
                     controller: confirmPasswordController,
                     obscureText: comfirmPass,
-                    style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                    style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                     decoration: InputDecoration(
                       hintText: ' Confirm Password',
                       hintStyle: TextStyle(
-                        fontSize: context.isTablet ? 7.sp : 14.sp,
+                        fontSize: isTablet ? 7.sp : 14.sp,
                         color: Colors.grey.shade500,
                       ),
                       prefixIcon: Icon(
@@ -536,7 +536,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   child: Text(
                     'Sign Up',
                     style: GoogleFonts.roboto(
-                      fontSize: context.isTablet ? 9.sp : 18.sp,
+                      fontSize: isTablet ? 9.sp : 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -573,7 +573,7 @@ class _CreateScreenState extends State<CreateScreen> {
                     child: Text.rich(
                       TextSpan(
                         style: GoogleFonts.roboto(
-                          fontSize: context.isTablet ? 6.sp : 12.sp,
+                          fontSize: isTablet ? 6.sp : 12.sp,
                           color: Colors.black,
                           height: 1.3.h,
                         ),
@@ -623,7 +623,7 @@ class _CreateScreenState extends State<CreateScreen> {
                     child: Text(
                       'Or',
                       style: TextStyle(
-                        fontSize: context.isTablet ? 8.sp : 16.sp,
+                        fontSize: isTablet ? 8.sp : 16.sp,
                         color: Colors.grey.shade500,
                       ),
                     ),
@@ -663,7 +663,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       Text(
                         'Sign in with Google',
                         style: GoogleFonts.roboto(
-                          fontSize: context.isTablet ? 8.sp : 16.sp,
+                          fontSize: isTablet ? 8.sp : 16.sp,
                           color: Colors.black,
                         ),
                       ),
@@ -699,7 +699,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       Text(
                         'Sign in with Facebook',
                         style: GoogleFonts.roboto(
-                          fontSize: context.isTablet ? 8.sp : 16.sp,
+                          fontSize: isTablet ? 8.sp : 16.sp,
                           color: Colors.black,
                         ),
                       ),
@@ -714,7 +714,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 child: RichText(
                   text: TextSpan(
                     style: GoogleFonts.roboto(
-                      fontSize: context.isTablet ? 6.sp : 12.sp,
+                      fontSize: isTablet ? 6.sp : 12.sp,
                       color: Colors.grey.shade500,
                     ),
                     children: [
@@ -739,280 +739,294 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   Widget createBirthdayPage() {
+    final isTablet = context.isTablet;
     return Align(
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.isTablet ? 70.w : 16.w,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _goToPreviousPage();
-                  },
-                  icon: Icon(Icons.arrow_back_ios_new, size: 20.r),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                ),
+        child: Container(
+          width: isTablet ? 412.w : double.infinity,
+          margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 16.w),
+          decoration: BoxDecoration(
+            //color: Colors.white,
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _goToPreviousPage();
+                    },
+                    icon: Icon(Icons.arrow_back_ios_new, size: 20.r),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                  ),
 
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: context.isTablet ? 12.sp : 24.sp,
-                        fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: isTablet ? 12.sp : 24.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
+
+                  SizedBox(width: 20.w),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Title
+              Text(
+                'When’s Your Birthdays',
+                style: TextStyle(
+                  fontSize: isTablet ? 10.sp : 20.sp,
+                  fontWeight: FontWeight.w600,
                 ),
-
-                SizedBox(width: 20.w),
-              ],
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Title
-            Text(
-              'When’s Your Birthdays',
-              style: TextStyle(
-                fontSize: context.isTablet ? 10.sp : 20.sp,
-                fontWeight: FontWeight.w600,
               ),
-            ),
 
-            SizedBox(height: 5.h),
+              SizedBox(height: 5.h),
 
-            // Description
-            Text(
-              'You can choose who can see this form your profile.',
-              style: TextStyle(
-                fontSize: context.isTablet ? 7.sp : 14.sp,
-                color: Colors.grey,
+              // Description
+              Text(
+                'You can choose who can see this form your profile.',
+                style: TextStyle(
+                  fontSize: isTablet ? 7.sp : 14.sp,
+                  color: Colors.grey,
+                ),
               ),
-            ),
 
-            SizedBox(height: 32.h),
+              SizedBox(height: 32.h),
 
-            // Date label
-            Text(
-              'Birth of Date',
-              style: TextStyle(
-                fontSize: context.isTablet ? 8.sp : 16.sp,
-                color: Colors.grey,
+              // Date label
+              Text(
+                'Birth of Date',
+                style: TextStyle(
+                  fontSize: isTablet ? 8.sp : 16.sp,
+                  color: Colors.grey,
+                ),
               ),
-            ),
 
-            SizedBox(height: 8.h),
+              SizedBox(height: 8.h),
 
-            // Date field
-            GestureDetector(
-              //onTap: _selectDate,
-              onTap: _showCupertinoDatePicker,
-              child: Container(
-                height: 48.h,
+              // Date field
+              GestureDetector(
+                //onTap: _selectDate,
+                onTap: _showCupertinoDatePicker,
+                child: Container(
+                  height: 48.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF1F1F6),
+                    borderRadius: BorderRadius.circular(7.r),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  child: Row(
+                    children: [
+                      ValueListenableBuilder<DateTime?>(
+                        valueListenable: selectedDate,
+                        builder: (context, date, child) {
+                          return Text(
+                            _formatDate(date),
+                            style: TextStyle(
+                              fontSize: isTablet ? 7.sp : 14.sp,
+                              color: Colors.black,
+                            ),
+                          );
+                        },
+                      ),
+
+                      const Spacer(),
+
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        size: isTablet ? 12.sp : 24.sp,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 24.h),
+
+              // Continue button
+              SizedBox(
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF1F1F6),
-                  borderRadius: BorderRadius.circular(7.r),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 12.w),
-                child: Row(
-                  children: [
-                    ValueListenableBuilder<DateTime?>(
-                      valueListenable: selectedDate,
-                      builder: (context, date, child) {
-                        return Text(
-                          _formatDate(date),
-                          style: TextStyle(
-                            fontSize: context.isTablet ? 7.sp : 14.sp,
-                            color: Colors.black,
-                          ),
-                        );
-                      },
+                height: 48.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // if (selectedDate == null) {
+                    //   return;
+                    // }
+                    _nextPage();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD12CDB),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
                     ),
-
-                    const Spacer(),
-
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      size: context.isTablet ? 12.sp : 24.sp,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            SizedBox(height: 24.h),
-
-            // Continue button
-            SizedBox(
-              width: double.infinity,
-              height: 48.h,
-              child: ElevatedButton(
-                onPressed: () {
-                  // if (selectedDate == null) {
-                  //   return;
-                  // }
-                  _nextPage();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD12CDB),
-                  foregroundColor: Colors.white,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
                   ),
-                ),
-                child: Text(
-                  'Continue',
-                  style: TextStyle(
-                    fontSize: context.isTablet ? 8.sp : 16.sp,
-                    fontWeight: FontWeight.w600,
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(
+                      fontSize: isTablet ? 8.sp : 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget createGenderPage() {
+    final isTablet = context.isTablet;
     return Align(
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.isTablet ? 70.w : 16.w,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _goToPreviousPage();
-                    // Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back_ios_new, size: 20.r),
-                  padding: EdgeInsets.zero,
-                  constraints: BoxConstraints(),
-                ),
+        child: Container(
+          width: isTablet ? 412.w : double.infinity,
+          margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 16.w),
+          decoration: BoxDecoration(
+            //color: Colors.white,
+            borderRadius: BorderRadius.circular(12.r),
+          ),
 
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: context.isTablet ? 12.sp : 24.sp,
-                        fontWeight: FontWeight.w600,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _goToPreviousPage();
+                      // Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios_new, size: 20.r),
+                    padding: EdgeInsets.zero,
+                    constraints: BoxConstraints(),
+                  ),
+
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: isTablet ? 12.sp : 24.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
+
+                  SizedBox(width: 20.w),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Title
+              Text(
+                'What gender are your?',
+                style: TextStyle(
+                  fontSize: isTablet ? 10.sp : 20.sp,
+                  fontWeight: FontWeight.w600,
                 ),
-
-                SizedBox(width: 20.w),
-              ],
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Title
-            Text(
-              'What gender are your?',
-              style: TextStyle(
-                fontSize: context.isTablet ? 10.sp : 20.sp,
-                fontWeight: FontWeight.w600,
               ),
-            ),
 
-            SizedBox(height: 5.h),
+              SizedBox(height: 5.h),
 
-            // Description
-            Text(
-              'You can change who can sees your gender on your \n profile later.',
-              style: TextStyle(
-                fontSize: context.isTablet ? 7.sp : 14.sp,
-                color: Colors.grey,
+              // Description
+              Text(
+                'You can change who can sees your gender on your \n profile later.',
+                style: TextStyle(
+                  fontSize: isTablet ? 7.sp : 14.sp,
+                  color: Colors.grey,
+                ),
               ),
-            ),
 
-            SizedBox(height: 32.h),
-            _buildRadioOption('Male'),
-            Divider(color: Colors.grey.shade300, height: 1),
+              SizedBox(height: 32.h),
+              _buildRadioOption('Male'),
+              Divider(color: Colors.grey.shade300, height: 1),
 
-            // Radio List Item (Female)
-            _buildRadioOption('Female'),
-            Divider(color: Colors.grey.shade300, height: 1),
+              // Radio List Item (Female)
+              _buildRadioOption('Female'),
+              Divider(color: Colors.grey.shade300, height: 1),
 
-            // Radio List Item (Other)
-            _buildRadioOption('Other'),
-            Divider(color: Colors.grey.shade300, height: 1),
+              // Radio List Item (Other)
+              _buildRadioOption('Other'),
+              Divider(color: Colors.grey.shade300, height: 1),
 
-            SizedBox(height: 8.h),
+              SizedBox(height: 8.h),
 
-            // Footer Note
-            Text(
-              'Select other to choose another gender or if\n you’d rather not say.',
-              style: TextStyle(
-                fontSize: context.isTablet ? 8.sp : 16.sp,
-                color: Colors.grey.shade500,
+              // Footer Note
+              Text(
+                'Select other to choose another gender or if\n you’d rather not say.',
+                style: TextStyle(
+                  fontSize: isTablet ? 8.sp : 16.sp,
+                  color: Colors.grey.shade500,
+                ),
               ),
-            ),
 
-            SizedBox(height: 30.h),
-            // Continue button
-            SizedBox(
-              width: double.infinity,
-              height: 48.h,
-              child: ElevatedButton(
-                onPressed: () {
-                  _nextPage();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => InterestsScreen(
-                  //       birthday: widget.birthday,
-                  //       gender: selectedGender,
-                  //     ),
-                  //   ),
-                  // );
-                  // Next page
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD12CDB),
-                  foregroundColor: Colors.white,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7.r),
+              SizedBox(height: 30.h),
+              // Continue button
+              SizedBox(
+                width: double.infinity,
+                height: 48.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _nextPage();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => InterestsScreen(
+                    //       birthday: widget.birthday,
+                    //       gender: selectedGender,
+                    //     ),
+                    //   ),
+                    // );
+                    // Next page
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD12CDB),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.r),
+                    ),
+                  ),
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(
+                      fontSize: isTablet ? 8.sp : 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-                child: Text(
-                  'Continue',
-                  style: TextStyle(
-                    fontSize: context.isTablet ? 8.sp : 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildRadioOption(String value) {
+    final isTablet = context.isTablet;
     return ValueListenableBuilder<String>(
       valueListenable: selectedGender,
       builder: (context, gender, child) {
@@ -1020,7 +1034,7 @@ class _CreateScreenState extends State<CreateScreen> {
           title: Text(
             value,
             style: TextStyle(
-              fontSize: context.isTablet ? 8.sp : 16.sp,
+              fontSize: isTablet ? 8.sp : 16.sp,
               fontWeight: FontWeight.w600,
               color: Colors.black,
             ),
@@ -1041,16 +1055,20 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   Widget createInterestsPage() {
+    final isTablet = context.isTablet;
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
             child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
+                maxWidth: isTablet ? 412.w : double.infinity,
+              ),
               child: IntrinsicHeight(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: context.isTablet ? 70.w : 16.w,
+                    horizontal: isTablet ? 70.w : 16.w,
                   ),
 
                   child: Column(
@@ -1073,7 +1091,7 @@ class _CreateScreenState extends State<CreateScreen> {
                               child: Text(
                                 'Sign up',
                                 style: TextStyle(
-                                  fontSize: context.isTablet ? 12.sp : 24.sp,
+                                  fontSize: isTablet ? 12.sp : 24.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -1090,7 +1108,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       Text(
                         'Choose your\nInterests',
                         style: GoogleFonts.roboto(
-                          fontSize: context.isTablet ? 24.sp : 48.sp,
+                          fontSize: isTablet ? 24.sp : 48.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                           height: 1.15.h,
@@ -1102,7 +1120,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       Text(
                         'Get better circles recommendations',
                         style: TextStyle(
-                          fontSize: context.isTablet ? 8.sp : 16.sp,
+                          fontSize: isTablet ? 8.sp : 16.sp,
                           color: Colors.black,
                         ),
                       ),
@@ -1113,8 +1131,8 @@ class _CreateScreenState extends State<CreateScreen> {
                         valueListenable: interestsVersion,
                         builder: (context, version, child) {
                           return Wrap(
-                            spacing: context.isTablet ? 5.w : 10.w,
-                            runSpacing: context.isTablet ? 5.w : 10.h,
+                            spacing: isTablet ? 5.w : 10.w,
+                            runSpacing: isTablet ? 5.w : 10.h,
                             children: interests.map((interest) {
                               return GestureDetector(
                                 onTap: () {
@@ -1123,8 +1141,8 @@ class _CreateScreenState extends State<CreateScreen> {
                                 },
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
-                                    horizontal: context.isTablet ? 10.w : 20.w,
-                                    vertical: context.isTablet ? 2.h : 4.h,
+                                    horizontal: isTablet ? 10.w : 20.w,
+                                    vertical: isTablet ? 2.h : 4.h,
                                   ),
                                   decoration: BoxDecoration(
                                     color: interest.isSelected
@@ -1156,9 +1174,7 @@ class _CreateScreenState extends State<CreateScreen> {
                                       Text(
                                         interest.title,
                                         style: TextStyle(
-                                          fontSize: context.isTablet
-                                              ? 8.sp
-                                              : 16.sp,
+                                          fontSize: isTablet ? 8.sp : 16.sp,
                                           fontWeight: FontWeight.w600,
                                           color: interest.isSelected
                                               ? const Color(0xFFD02BDD)
@@ -1198,7 +1214,7 @@ class _CreateScreenState extends State<CreateScreen> {
                                 child: Text(
                                   'Skip',
                                   style: TextStyle(
-                                    fontSize: context.isTablet ? 7.sp : 15.sp,
+                                    fontSize: isTablet ? 7.sp : 15.sp,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
@@ -1226,7 +1242,7 @@ class _CreateScreenState extends State<CreateScreen> {
                                 child: Text(
                                   'Continue',
                                   style: TextStyle(
-                                    fontSize: context.isTablet ? 7.sp : 15.sp,
+                                    fontSize: isTablet ? 7.sp : 15.sp,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   ),
@@ -1236,6 +1252,7 @@ class _CreateScreenState extends State<CreateScreen> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 10.h),
                     ],
                   ),
                 ),
@@ -1248,16 +1265,20 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   Widget createProfilePicturePage() {
+    final isTablet = context.isTablet;
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
             child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
+                maxWidth: isTablet ? 412.w : double.infinity,
+              ),
               child: IntrinsicHeight(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: context.isTablet ? 70.w : 16.w,
+                    horizontal: isTablet ? 70.w : 16.w,
                   ),
 
                   child: Column(
@@ -1280,7 +1301,7 @@ class _CreateScreenState extends State<CreateScreen> {
                               child: Text(
                                 'Sign up',
                                 style: TextStyle(
-                                  fontSize: context.isTablet ? 12.sp : 24.sp,
+                                  fontSize: isTablet ? 12.sp : 24.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -1297,7 +1318,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       Text(
                         'Profile Picture',
                         style: GoogleFonts.roboto(
-                          fontSize: context.isTablet ? 16.sp : 32.sp,
+                          fontSize: isTablet ? 16.sp : 32.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                           height: 1.15.h,
@@ -1311,7 +1332,7 @@ class _CreateScreenState extends State<CreateScreen> {
                         'Add profile picture to get better\n circles connections',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: context.isTablet ? 8.sp : 16.sp,
+                          fontSize: isTablet ? 8.sp : 16.sp,
                           color: Colors.black,
                         ),
                       ),
@@ -1389,7 +1410,7 @@ class _CreateScreenState extends State<CreateScreen> {
 
                       // 1. Take Photo Button (Purple Filled)
                       SizedBox(
-                        width: context.isTablet ? 125.w : 250.w,
+                        width: isTablet ? 125.w : 250.w,
                         height: 48.h,
                         child: ElevatedButton.icon(
                           onPressed: () => _pickImage(ImageSource.camera),
@@ -1401,7 +1422,7 @@ class _CreateScreenState extends State<CreateScreen> {
                           label: Text(
                             'Take Photo',
                             style: TextStyle(
-                              fontSize: context.isTablet ? 8.sp : 16.sp,
+                              fontSize: isTablet ? 8.sp : 16.sp,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
@@ -1423,11 +1444,11 @@ class _CreateScreenState extends State<CreateScreen> {
                           _pickImage(ImageSource.gallery);
                         },
                         child: SizedBox(
-                          width: context.isTablet ? 125.w : 250.w,
+                          width: isTablet ? 125.w : 250.w,
                           height: 48.h,
                           child: Row(
                             children: [
-                              SizedBox(width: context.isTablet ? 10.w : 40.w),
+                              SizedBox(width: isTablet ? 10.w : 40.w),
                               //Icon(Icons.image),
                               Image.asset(
                                 'assets/images/gallery.png',
@@ -1435,11 +1456,11 @@ class _CreateScreenState extends State<CreateScreen> {
                                 height: 24.h,
                                 fit: BoxFit.contain,
                               ),
-                              SizedBox(width: context.isTablet ? 0.w : 5.w),
+                              SizedBox(width: isTablet ? 0.w : 5.w),
                               Text(
                                 'Import From Gallery',
                                 style: TextStyle(
-                                  fontSize: context.isTablet ? 8.sp : 16.sp,
+                                  fontSize: isTablet ? 8.sp : 16.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -1494,7 +1515,7 @@ class _CreateScreenState extends State<CreateScreen> {
                           child: Text(
                             'Continue',
                             style: TextStyle(
-                              fontSize: context.isTablet ? 8.sp : 16.sp,
+                              fontSize: isTablet ? 8.sp : 16.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -1528,14 +1549,14 @@ class _CreateScreenState extends State<CreateScreen> {
                           child: Text(
                             'Skip',
                             style: TextStyle(
-                              fontSize: context.isTablet ? 8.sp : 16.sp,
+                              fontSize: isTablet ? 8.sp : 16.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87,
                             ),
                           ),
                         ),
                       ),
-                      // const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                     ],
                   ),
                 ),

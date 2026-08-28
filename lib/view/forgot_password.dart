@@ -21,16 +21,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = context.isTablet;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Container(
-            width: context.isTablet ? 412.w : double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: context.isTablet ? 70.w : 0,
-            ),
+            width: isTablet ? 412.w : double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 0),
             decoration: BoxDecoration(
               //color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
@@ -54,7 +53,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   'Forgot Password?',
                   style: TextStyle(
-                    fontSize: context.isTablet ? 10.sp : 20.sp,
+                    fontSize: isTablet ? 10.sp : 20.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -65,7 +64,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   'Enter your email to receive OTP code to rerset\n your password.',
                   style: TextStyle(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey,
                   ),
                 ),
@@ -74,7 +73,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   'Email or Phone Number',
                   style: GoogleFonts.roboto(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -84,11 +83,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 TextField(
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                  style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                   decoration: InputDecoration(
                     hintText: 'Email or Phone number',
                     hintStyle: TextStyle(
-                      fontSize: context.isTablet ? 7.sp : 14.sp,
+                      fontSize: isTablet ? 7.sp : 14.sp,
                       color: Colors.grey.shade500,
                     ),
                     prefixIcon: Icon(
@@ -134,7 +133,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: Text(
                       'Continue',
                       style: TextStyle(
-                        fontSize: context.isTablet ? 8.sp : 16.sp,
+                        fontSize: isTablet ? 8.sp : 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

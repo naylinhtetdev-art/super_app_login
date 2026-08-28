@@ -61,18 +61,15 @@ class _VerifyEmailState extends State<VerifyEmail> {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = context.isTablet;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.isTablet ? 0.w : 16.w,
-          ),
+          //padding: EdgeInsets.symmetric(horizontal: isTablet ? 0.w : 16.w),
           child: Container(
-            width: context.isTablet ? 412.w : double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: context.isTablet ? 70.w : 0,
-            ),
+            width: isTablet ? 412.w : double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 16.w),
             decoration: BoxDecoration(
               //color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
@@ -96,7 +93,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 Text(
                   'Verify Your Email Address',
                   style: TextStyle(
-                    fontSize: context.isTablet ? 10.sp : 20.sp,
+                    fontSize: isTablet ? 10.sp : 20.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -106,7 +103,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   child: RichText(
                     text: TextSpan(
                       style: GoogleFonts.roboto(
-                        fontSize: context.isTablet ? 6.sp : 11.sp,
+                        fontSize: isTablet ? 6.sp : 11.sp,
                         color: Colors.black,
                       ),
                       children: [
@@ -138,9 +135,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   keyboardType: TextInputType.number,
                   theme: MaterialPinTheme(
                     shape: MaterialPinShape.filled,
-                    cellSize: context.isTablet
-                        ? Size(35.w, 54.h)
-                        : Size(50.w, 54.h),
+                    cellSize: isTablet ? Size(32.w, 54.h) : Size(50.w, 54.h),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                 ),
@@ -152,7 +147,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       ? RichText(
                           text: TextSpan(
                             style: TextStyle(
-                              fontSize: context.isTablet ? 7.sp : 14.sp,
+                              fontSize: isTablet ? 7.sp : 14.sp,
                               color: Colors.grey,
                             ),
                             children: [TextSpan(text: 'OTP Expired ')],
@@ -161,7 +156,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       : RichText(
                           text: TextSpan(
                             style: TextStyle(
-                              fontSize: context.isTablet ? 7.sp : 14.sp,
+                              fontSize: isTablet ? 7.sp : 14.sp,
                               color: Colors.grey,
                             ),
                             children: [
@@ -170,7 +165,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                 text: '${_start}s',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                  color: Color.fromARGB(255, 102, 101, 101),
                                 ),
                               ),
                             ],
@@ -204,7 +199,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     child: Text(
                       'Verify',
                       style: TextStyle(
-                        fontSize: context.isTablet ? 8.sp : 16.sp,
+                        fontSize: isTablet ? 8.sp : 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -215,7 +210,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   child: RichText(
                     text: TextSpan(
                       style: GoogleFonts.roboto(
-                        fontSize: context.isTablet ? 6.sp : 12.sp,
+                        fontSize: isTablet ? 6.sp : 12.sp,
                         color: Colors.black,
                       ),
                       children: [

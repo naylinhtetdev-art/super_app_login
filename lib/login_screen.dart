@@ -42,15 +42,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = context.isTablet;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            width: context.isTablet ? 412.w : double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: context.isTablet ? 70.w : 0,
-            ),
+            width: isTablet ? 412.w : double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 0),
             padding: EdgeInsets.fromLTRB(15.w, 75.h, 15.w, 15.h),
             decoration: BoxDecoration(
               //color: Colors.white,
@@ -65,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         'OLLIO',
                         style: GoogleFonts.inter(
-                          fontSize: context.isTablet ? 30.sp : 60.sp,
+                          fontSize: isTablet ? 30.sp : 60.sp,
                           fontWeight: FontWeight.bold,
                           color: const Color(0xFFD02BDD),
                           letterSpacing: 3.w,
@@ -77,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Connect with your rare soul!",
                         style: GoogleFonts.inter(
-                          fontSize: context.isTablet ? 7.sp : 14.sp,
+                          fontSize: isTablet ? 7.sp : 14.sp,
                           color: Colors.grey.shade600,
                           height: 0.5.h,
                         ),
@@ -86,13 +85,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                SizedBox(height: context.isTablet ? 25.h : 50.h),
+                SizedBox(height: isTablet ? 25.h : 50.h),
 
                 Center(
                   child: Text(
                     'Sign in!',
                     style: GoogleFonts.inter(
-                      fontSize: context.isTablet ? 16.sp : 32.sp,
+                      fontSize: isTablet ? 16.sp : 32.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
@@ -105,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     'Join to reconnect with your rare soul.',
                     style: GoogleFonts.inter(
-                      fontSize: context.isTablet ? 6.sp : 12.sp,
+                      fontSize: isTablet ? 6.sp : 12.sp,
                       color: Colors.grey.shade500,
                     ),
                   ),
@@ -116,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Email or Phone Number',
                   style: GoogleFonts.roboto(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -126,11 +125,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                  style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                   decoration: InputDecoration(
                     hintText: 'Email or Phone number',
                     hintStyle: TextStyle(
-                      fontSize: context.isTablet ? 7.sp : 14.sp,
+                      fontSize: isTablet ? 7.sp : 14.sp,
                       color: Colors.grey.shade500,
                     ),
                     prefixIcon: Icon(
@@ -156,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Password',
                   style: GoogleFonts.roboto(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -166,11 +165,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: passwordController,
                   obscureText: obscurePassword,
-                  style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                  style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                   decoration: InputDecoration(
                     hintText: 'Password',
                     hintStyle: TextStyle(
-                      fontSize: context.isTablet ? 7.sp : 14.sp,
+                      fontSize: isTablet ? 7.sp : 14.sp,
                       color: Colors.grey.shade500,
                     ),
                     prefixIcon: Icon(
@@ -226,14 +225,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Forgot Password?',
                       style: TextStyle(
-                        fontSize: context.isTablet ? 7.sp : 16.sp,
+                        fontSize: isTablet ? 7.sp : 16.sp,
                         color: Colors.grey.shade600,
                       ),
                     ),
                   ),
                 ),
 
-                SizedBox(height: context.isTablet ? 7.h : 15.h),
+                SizedBox(height: isTablet ? 7.h : 15.h),
 
                 SizedBox(
                   width: double.infinity,
@@ -253,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Sign In',
                       style: GoogleFonts.roboto(
-                        fontSize: context.isTablet ? 9.sp : 18.sp,
+                        fontSize: isTablet ? 9.sp : 18.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -273,7 +272,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Or',
                         style: TextStyle(
-                          fontSize: context.isTablet ? 8.sp : 16.sp,
+                          fontSize: isTablet ? 8.sp : 16.sp,
                           color: Colors.grey.shade500,
                         ),
                       ),
@@ -313,7 +312,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Sign in with Google',
                           style: GoogleFonts.roboto(
-                            fontSize: context.isTablet ? 8.sp : 16.sp,
+                            fontSize: isTablet ? 8.sp : 16.sp,
                             color: Colors.black,
                           ),
                         ),
@@ -349,7 +348,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Sign in with Facebook',
                           style: GoogleFonts.roboto(
-                            fontSize: context.isTablet ? 8.sp : 16.sp,
+                            fontSize: isTablet ? 8.sp : 16.sp,
                             color: Colors.black,
                           ),
                         ),
@@ -364,7 +363,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: RichText(
                     text: TextSpan(
                       style: GoogleFonts.roboto(
-                        fontSize: context.isTablet ? 6.sp : 12.sp,
+                        fontSize: isTablet ? 6.sp : 12.sp,
                         color: Colors.grey.shade500,
                       ),
                       children: [

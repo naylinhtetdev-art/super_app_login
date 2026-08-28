@@ -26,18 +26,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = context.isTablet;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.isTablet ? 0.w : 16.w,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: isTablet ? 0.w : 16.w),
           child: Container(
-            width: context.isTablet ? 412.w : double.infinity,
-            margin: EdgeInsets.symmetric(
-              horizontal: context.isTablet ? 70.w : 0,
-            ),
+            width: isTablet ? 412.w : double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: isTablet ? 70.w : 0),
             decoration: BoxDecoration(
               //color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
@@ -61,7 +58,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 Text(
                   'Create new password',
                   style: TextStyle(
-                    fontSize: context.isTablet ? 10.sp : 20.sp,
+                    fontSize: isTablet ? 10.sp : 20.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -70,7 +67,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 Text(
                   "Enter your new password you always may remember.\nYou password must have 8 characters at least.",
                   style: GoogleFonts.inter(
-                    fontSize: context.isTablet ? 6.sp : 12.sp,
+                    fontSize: isTablet ? 6.sp : 12.sp,
                     color: Colors.grey.shade600,
                     height: 1.2.h,
                   ),
@@ -80,7 +77,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 Text(
                   'New Password',
                   style: GoogleFonts.roboto(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -90,11 +87,11 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 TextField(
                   controller: passwordController,
                   obscureText: obscurePassword,
-                  style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                  style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                   decoration: InputDecoration(
                     hintText: 'New Password',
                     hintStyle: TextStyle(
-                      fontSize: context.isTablet ? 7.sp : 14.sp,
+                      fontSize: isTablet ? 7.sp : 14.sp,
                       color: Colors.grey.shade500,
                     ),
                     suffixIcon: Row(
@@ -140,7 +137,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 Text(
                   'Confirm Password',
                   style: GoogleFonts.roboto(
-                    fontSize: context.isTablet ? 7.sp : 14.sp,
+                    fontSize: isTablet ? 7.sp : 14.sp,
                     color: Colors.grey.shade700,
                   ),
                 ),
@@ -150,11 +147,11 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 TextField(
                   controller: confirmPasswordController,
                   obscureText: confirmObscurePassword,
-                  style: TextStyle(fontSize: context.isTablet ? 7.sp : 14.sp),
+                  style: TextStyle(fontSize: isTablet ? 7.sp : 14.sp),
                   decoration: InputDecoration(
                     hintText: 'Confirm Password',
                     hintStyle: TextStyle(
-                      fontSize: context.isTablet ? 7.sp : 14.sp,
+                      fontSize: isTablet ? 7.sp : 14.sp,
                       color: Colors.grey.shade500,
                     ),
                     suffixIcon: Row(
@@ -225,7 +222,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     child: Text(
                       'Change Password',
                       style: TextStyle(
-                        fontSize: context.isTablet ? 8.sp : 16.sp,
+                        fontSize: isTablet ? 8.sp : 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
