@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:super_app/create_screen.dart';
 import 'package:super_app/extensions/context_extension.dart';
+import 'package:super_app/home_screen.dart';
 import 'package:super_app/view/forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -239,7 +240,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 48.h,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Login
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                        (route) => false,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD02BDD),
