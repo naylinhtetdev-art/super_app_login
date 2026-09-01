@@ -8,23 +8,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:super_app/main.dart';
+import 'package:super_app/model/post_model.dart';
+import 'package:super_app/view/post_card.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('PostCard action buttons render without missing asset errors', (
+    WidgetTester tester,
+  ) async {
+    final post = PostModel(
+      id: '1',
+      userName: 'Nay',
+      avatar: 'assets/images/profile-image.png',
+      text: 'Hello world',
+      hashtags: '#flutter',
+      images: const ['assets/images/opst-img-1.png'],
+      likes: 12,
+      comments: 3,
+      share: 8,
+      timeAgo: '2h',
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(body: PostCard(post: post)),
+      ),
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byType(PostCard), findsOneWidget);
+    expect(find.text('12'), findsOneWidget);
+    expect(find.text('3'), findsOneWidget);
+    expect(find.text('8'), findsOneWidget);
   });
 }

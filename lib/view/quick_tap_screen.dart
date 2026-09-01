@@ -10,7 +10,7 @@ class QuickTapScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isTablet = context.isTablet;
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

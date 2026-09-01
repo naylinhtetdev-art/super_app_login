@@ -48,59 +48,79 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: Colors.black,
-    appBar: AppBar(
-      iconTheme: const IconThemeData(color: Colors.white),
-      backgroundColor: Colors.black,
-      title: Text(
-        'OLLIO',
-        style: TextStyle(
-          color: Colors.purple,
-          fontSize: 20.sp,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-
-      titleSpacing: 0,
-      elevation: 3,
-      actions: [
-        IconButton(
-          icon: Image(
-            image: AssetImage('assets/images/plus-filled.png'),
-            width: 24.w,
-            height: 24.h,
-          ),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Image(
-            image: AssetImage('assets/images/search.png'),
-            width: 24.w,
-            height: 24.h,
-          ),
-          onPressed: () {},
-        ),
-        IconButton(
-          // icon: Image(
-          //   image: AssetImage('assets/images/noti.png'),
-          //   width: 24.w,
-          //   height: 24.h,
-          // ),
-          onPressed: () {},
-          icon: Badge(
-            isLabelVisible: notificationCount > 0,
-            label: Text('$notificationCount'),
-            child: Image.asset(
-              'assets/images/noti.png',
+  List<Widget> _buildAppBarActions() {
+    switch (index) {
+      case 0:
+        return [
+          IconButton(
+            icon: Image(
+              image: AssetImage('assets/images/plus-filled.png'),
               width: 24.w,
               height: 24.h,
             ),
+            onPressed: () {},
           ),
-        ),
-      ],
-    ),
+          IconButton(
+            icon: Image(
+              image: AssetImage('assets/images/search.png'),
+              width: 24.w,
+              height: 24.h,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Badge(
+              isLabelVisible: notificationCount > 0,
+              label: Text('$notificationCount'),
+              child: Image.asset(
+                'assets/images/noti.png',
+                width: 24.w,
+                height: 24.h,
+              ),
+            ),
+          ),
+        ];
+      case 3:
+        return [
+          IconButton(
+            onPressed: () {},
+            icon: Badge(
+              isLabelVisible: notificationCount > 0,
+              label: Text('$notificationCount'),
+              child: Image.asset(
+                'assets/images/noti.png',
+                width: 24.w,
+                height: 24.h,
+              ),
+            ),
+          ),
+        ];
+      default:
+        return const [];
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.black,
+    appBar: index == 1
+        ? null
+        : AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
+            backgroundColor: Colors.black,
+            title: Text(
+              'OLLIO',
+              style: TextStyle(
+                color: Colors.purple,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            titleSpacing: 0,
+            elevation: 3,
+            actions: _buildAppBarActions(),
+          ),
     drawer: Drawer(
       backgroundColor: Colors.grey.shade800,
       width: MediaQuery.of(context).size.width * 0.9,
@@ -213,6 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     body: PageView(
       controller: _pageController,
+      physics: const NeverScrollableScrollPhysics(),
       onPageChanged: (pageIndex) {
         setState(() {
           index = pageIndex;
