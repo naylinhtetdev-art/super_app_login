@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_app/model/post_model.dart';
+import 'package:super_app/utils/constants.dart';
 import 'post_image_grid.dart';
 
 class PostCard extends StatelessWidget {
@@ -12,17 +13,22 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardColor = Theme.of(context).cardColor;
+    final textColor = Theme.of(context).colorScheme.onSurface;
+    final subTextColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
+    final borderColor = isDark
+        ? Colors.white.withOpacity(0.08)
+        : Colors.black.withOpacity(0.08);
     return Container(
       margin: EdgeInsets.only(bottom: 8.h),
 
       padding: EdgeInsets.only(top: 12.h),
 
       decoration: BoxDecoration(
-        color: const Color(0xFF101116),
+        color: cardColor,
 
-        border: Border(
-          bottom: BorderSide(color: Colors.white.withOpacity(0.08)),
-        ),
+        border: Border(bottom: BorderSide(color: borderColor)),
       ),
 
       child: Column(
@@ -51,8 +57,8 @@ class PostCard extends StatelessWidget {
                     children: [
                       Text(
                         post.userName,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: textColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -61,17 +67,14 @@ class PostCard extends StatelessWidget {
 
                       Text(
                         post.timeAgo,
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: 11,
-                        ),
+                        style: TextStyle(color: subTextColor, fontSize: 11),
                       ),
                     ],
                   ),
                 ),
 
                 PopupMenuButton<String>(
-                  icon: Icon(Icons.more_vert, color: Colors.grey.shade400),
+                  icon: Icon(Icons.more_vert, color: cardColor),
 
                   onSelected: (value) {
                     if (value == 'edit') {
@@ -100,7 +103,7 @@ class PostCard extends StatelessWidget {
             child: Text(
               post.text,
               style: TextStyle(
-                color: Colors.white,
+                color: textColor,
                 fontSize: 14.sp,
                 height: 1.5.h,
               ),
@@ -112,7 +115,7 @@ class PostCard extends StatelessWidget {
             child: Text(
               post.hashtags,
               style: TextStyle(
-                color: Colors.purple.shade300,
+                color: AppColors.primary,
                 fontSize: 14.sp,
                 height: 1.5.h,
               ),
@@ -141,7 +144,7 @@ class PostCard extends StatelessWidget {
                       Icon(
                         post.isLiked ? Icons.favorite : Icons.favorite_border,
 
-                        color: post.isLiked ? Colors.red : Colors.grey.shade500,
+                        color: post.isLiked ? Colors.red : subTextColor,
 
                         size: 19,
                       ),
@@ -168,17 +171,14 @@ class PostCard extends StatelessWidget {
                       'assets/icons/icons-comment.png',
                       width: 19.w,
                       height: 19.h,
-                      color: Colors.grey.shade500,
+                      color: subTextColor,
                     ),
 
                     SizedBox(width: 5.w),
 
                     Text(
                       '${post.comments}',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: subTextColor, fontSize: 12),
                     ),
                   ],
                 ),
@@ -192,16 +192,13 @@ class PostCard extends StatelessWidget {
                       'assets/icons/icons-share.png',
                       width: 19.w,
                       height: 19.h,
-                      color: Colors.grey.shade500,
+                      color: subTextColor,
                     ),
 
                     SizedBox(width: 5.w),
                     Text(
                       '${post.share}',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: subTextColor, fontSize: 12),
                     ),
                   ],
                 ),
@@ -210,19 +207,12 @@ class PostCard extends StatelessWidget {
 
                 Row(
                   children: [
-                    Icon(
-                      Icons.visibility,
-                      color: Colors.grey.shade500,
-                      size: 20.sp,
-                    ),
+                    Icon(Icons.visibility, color: subTextColor, size: 20.sp),
 
                     SizedBox(width: 5.w),
                     Text(
                       '${post.views}',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: subTextColor, fontSize: 12),
                     ),
                   ],
                 ),

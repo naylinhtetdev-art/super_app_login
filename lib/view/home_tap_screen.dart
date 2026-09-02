@@ -18,23 +18,28 @@ class HomeTapScreen extends StatelessWidget {
     final isTablet = context.isTablet;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0D0F14),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Consumer<FeedProvider>(
         builder: (context, provider, child) {
           if (provider.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            );
           }
 
           return RefreshIndicator(
             onRefresh: provider.refreshFeed,
+            color: Theme.of(context).colorScheme.primary,
             child: ListView(
               padding: EdgeInsets.symmetric(
                 horizontal: isTablet ? 20.w : 5.w,
                 vertical: 12.h,
               ),
               children: [
-                const StorySection(),
-                const QuickModeCard(),
+                StorySection(),
+                QuickModeCard(),
                 SizedBox(height: 10.h),
                 ...provider.posts.map((post) {
                   return PostCard(

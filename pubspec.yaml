@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   pin_code_fields: ^9.4.0
   provider: ^6.1.5+1
+  shared_preferences: ^2.5.4
   
 
 dev_dependencies:
@@ -67,6 +68,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/videos/
+    - assets/shops/
     
   #   - images/a_dot_ham.jpeg
 
