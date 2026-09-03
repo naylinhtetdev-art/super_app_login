@@ -2,14 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_app/model/post_model.dart';
 import 'package:super_app/utils/constants.dart';
+import 'package:super_app/widget/comment_bottom_sheet.dart';
+import 'package:super_app/widget/edit_buttom_sheet.dart';
+import 'package:super_app/widget/reaction_like_button.dart';
+import 'package:super_app/widget/share_bottom_sheet.dart';
 import 'post_image_grid.dart';
 
 class PostCard extends StatelessWidget {
   final PostModel post;
   final VoidCallback? onLike;
   final VoidCallback? onEdit;
-
-  const PostCard({super.key, required this.post, this.onLike, this.onEdit});
+  final Function(String emoji)? onReactionSelected;
+  PostCard({
+    super.key,
+    required this.post,
+    this.onLike,
+    this.onEdit,
+    this.onReactionSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +54,7 @@ class PostCard extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  radius: 20.sp,
+                  radius: 20.r,
                   backgroundImage: AssetImage(post.avatar),
                 ),
 
@@ -72,21 +82,15 @@ class PostCard extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                PopupMenuButton<String>(
-                  icon: Icon(Icons.more_vert, color: cardColor),
-
-                  onSelected: (value) {
-                    if (value == 'edit') {
-                      onEdit?.call();
-                    }
+                InkWell(
+                  onTap: () {
+                    EditBottomSheet.show(context);
                   },
-
-                  itemBuilder: (context) {
-                    return const [
-                      PopupMenuItem(value: 'edit', child: Text('Edit')),
-                    ];
-                  },
+                  borderRadius: BorderRadius.circular(20.r),
+                  child: Padding(
+                    padding: EdgeInsets.all(4.r),
+                    child: Icon(Icons.more_vert, color: textColor),
+                  ),
                 ),
               ],
             ),
@@ -136,27 +140,32 @@ class PostCard extends StatelessWidget {
             child: Row(
               children: [
                 // Like
-                InkWell(
+                ReactionLikeButton(
+                  isLiked: post.isLiked,
+                  likesCount: post.likes,
                   onTap: onLike,
+                  onReactionSelected: onReactionSelected,
+                ),
 
+                SizedBox(width: 18.w),
+
+                // Comment
+                InkWell(
+                  onTap: () {
+                    CommentBottomSheet.show(context);
+                  },
                   child: Row(
                     children: [
-                      Icon(
-                        post.isLiked ? Icons.favorite : Icons.favorite_border,
-
-                        color: post.isLiked ? Colors.red : subTextColor,
-
-                        size: 19,
+                      Image.asset(
+                        'assets/icons/icons-comment.png',
+                        width: 19.w,
+                        height: 19.h,
+                        color: subTextColor,
                       ),
-
                       SizedBox(width: 5.w),
-
                       Text(
-                        '${post.likes}',
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: 12,
-                        ),
+                        '${post.comments}',
+                        style: TextStyle(color: subTextColor, fontSize: 12.sp),
                       ),
                     ],
                   ),
@@ -164,43 +173,26 @@ class PostCard extends StatelessWidget {
 
                 SizedBox(width: 18.w),
 
-                // Comment
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/icons/icons-comment.png',
-                      width: 19.w,
-                      height: 19.h,
-                      color: subTextColor,
-                    ),
-
-                    SizedBox(width: 5.w),
-
-                    Text(
-                      '${post.comments}',
-                      style: TextStyle(color: subTextColor, fontSize: 12),
-                    ),
-                  ],
-                ),
-
-                SizedBox(width: 18.w),
-
                 // Share
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/icons/icons-share.png',
-                      width: 19.w,
-                      height: 19.h,
-                      color: subTextColor,
-                    ),
-
-                    SizedBox(width: 5.w),
-                    Text(
-                      '${post.share}',
-                      style: TextStyle(color: subTextColor, fontSize: 12),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {
+                    ShareBottomSheet.show(context);
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/icons/icons-share.png',
+                        width: 19.w,
+                        height: 19.h,
+                        color: subTextColor,
+                      ),
+                      SizedBox(width: 5.w),
+                      Text(
+                        '${post.share}',
+                        style: TextStyle(color: subTextColor, fontSize: 12.sp),
+                      ),
+                    ],
+                  ),
                 ),
 
                 Spacer(),

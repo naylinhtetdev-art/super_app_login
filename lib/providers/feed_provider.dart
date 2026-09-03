@@ -40,7 +40,7 @@ class FeedProvider extends ChangeNotifier {
     PostModel(
       id: '3',
       userName: 'Travel Club',
-      avatar: 'assets/images/avatar3.jpg',
+      avatar: 'assets/images/user-ellipse-2.png',
       text: 'Weekend မှာ သွားလည်ဖို့ အကောင်းဆုံးနေရာလေးတွေပါ။',
       hashtags: '#Nature #Lifewithyou #Beautifulwithnaturalflower',
       images: [
@@ -58,7 +58,7 @@ class FeedProvider extends ChangeNotifier {
     PostModel(
       id: '4',
       userName: 'Nature Lovers',
-      avatar: 'assets/images/avatar4.jpg',
+      avatar: 'assets/images/user-ellipse-1.png',
       text: 'Nature lovers တွေအတွက် ဒီနေရာလေးကို recommend လုပ်ချင်ပါတယ်။',
       hashtags: '#Nature #Lifewithyou #Beautifulwithnaturalflower',
       images: [

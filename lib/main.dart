@@ -27,69 +27,78 @@ void main() {
   //runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (!mounted) return;
+      context.read<ThemeProvider>().loadThemeMode();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    Provider.of<ThemeProvider>(context);
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-
-          // Light Theme Setup
-          theme: ThemeData(
-            brightness: Brightness.light,
-            scaffoldBackgroundColor: AppColors.lightBackground,
-            cardColor: AppColors.lightSurface,
-            appBarTheme: const AppBarTheme(
-              backgroundColor: AppColors.lightBackground,
-              iconTheme: IconThemeData(color: AppColors.lightTextPrimary),
-              titleTextStyle: TextStyle(
-                color: AppColors.primary,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, _) {
+        return ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              themeMode: themeProvider.themeMode,
+              theme: ThemeData(
+                brightness: Brightness.light,
+                scaffoldBackgroundColor: AppColors.lightBackground,
+                cardColor: AppColors.lightSurface,
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: AppColors.lightBackground,
+                  iconTheme: IconThemeData(color: AppColors.lightTextPrimary),
+                  titleTextStyle: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                colorScheme: const ColorScheme.light(
+                  primary: AppColors.primary,
+                  surface: AppColors.lightSurface,
+                  onSurface: AppColors.lightTextPrimary,
+                ),
               ),
-            ),
-            colorScheme: const ColorScheme.light(
-              primary: AppColors.primary,
-              surface: AppColors.lightSurface,
-              onSurface: AppColors.lightTextPrimary,
-            ),
-          ),
-
-          // Dark Theme Setup
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            scaffoldBackgroundColor: AppColors.darkBackground,
-            cardColor: AppColors.darkSurface,
-            appBarTheme: const AppBarTheme(
-              backgroundColor: AppColors.darkBackground,
-              iconTheme: IconThemeData(color: AppColors.darkTextPrimary),
-              titleTextStyle: TextStyle(
-                color: AppColors.primary,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                scaffoldBackgroundColor: AppColors.darkBackground,
+                cardColor: AppColors.darkSurface,
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: AppColors.darkBackground,
+                  iconTheme: IconThemeData(color: AppColors.darkTextPrimary),
+                  titleTextStyle: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                colorScheme: const ColorScheme.dark(
+                  primary: AppColors.primary,
+                  surface: AppColors.darkSurface,
+                  onSurface: AppColors.darkTextPrimary,
+                ),
               ),
-            ),
-            colorScheme: const ColorScheme.dark(
-              primary: AppColors.primary,
-              surface: AppColors.darkSurface,
-              onSurface: AppColors.darkTextPrimary,
-            ),
-          ),
-
-          home: const SplashScreen(),
-          //home: child,
+              home: const SplashScreen(),
+            );
+          },
         );
       },
-      //child: const HomeScreen(),
     );
   }
 }
