@@ -10,6 +10,8 @@ import 'package:super_app/view/me_tap_screen.dart';
 import 'package:super_app/view/quick_tap_screen.dart';
 import 'package:super_app/view/service_tap_screen.dart';
 import 'package:super_app/view/splash_screen.dart';
+import 'package:super_app/widget/create_bottom_sheet.dart';
+import 'package:super_app/widget/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,7 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            onPressed: () {},
+            onPressed: () {
+              CreateBottomSheet.show(context);
+            },
           ),
           IconButton(
             icon: Image.asset(
@@ -68,7 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: iconColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchScreen()),
+              );
+            },
           ),
           IconButton(
             onPressed: () {},
@@ -133,7 +142,9 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            onPressed: () {},
+            onPressed: () {
+              CreateBottomSheet.show(context);
+            },
           ),
           IconButton(
             icon: Image.asset(

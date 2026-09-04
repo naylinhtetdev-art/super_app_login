@@ -9,30 +9,38 @@ class ChatProvider extends ChangeNotifier {
   String get searchQuery => _searchQuery;
 
   // Mock Stories Data
-  List<StoryModel> stories = [
-    StoryModel(
+  List<ChatModel> stories = [
+    ChatModel(
       id: '1',
       name: 'Kyaw Myint',
       imageUrl: 'assets/images/user-ellipse-1.png',
       isOnline: true,
+      avatarUrl: '',
+      isAddStory: false,
     ),
-    StoryModel(
+    ChatModel(
       id: '2',
       name: 'Daw Mya',
       imageUrl: 'assets/images/user-ellipse-2.png',
       isOnline: true,
+      avatarUrl: '',
+      isAddStory: false,
     ),
-    StoryModel(
+    ChatModel(
       id: '3',
       name: 'Thandar',
       imageUrl: 'assets/images/user-ellipse-1.png',
       isOnline: true,
+      avatarUrl: '',
+      isAddStory: false,
     ),
-    StoryModel(
+    ChatModel(
       id: '4',
       name: 'Zin',
       imageUrl: 'assets/images/user-ellipse-2.png',
       isOnline: false,
+      avatarUrl: '',
+      isAddStory: false,
     ),
   ];
 

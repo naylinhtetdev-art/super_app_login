@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:super_app/providers/chat_provider.dart';
 import 'package:super_app/providers/feed_provider.dart';
 import 'package:super_app/providers/profile_provider.dart';
+import 'package:super_app/providers/search_provider.dart';
 import 'package:super_app/providers/service_provider.dart';
+import 'package:super_app/providers/story_provider.dart';
 import 'package:super_app/providers/theme_provider.dart';
 import 'package:super_app/providers/video_feed_provider.dart';
 import 'package:super_app/utils/constants.dart';
@@ -20,6 +22,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => ServiceProvider()),
         ChangeNotifierProvider(create: (_) => ChatProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
+        ChangeNotifierProvider(create: (_) => StoryProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
       ],
       child: const MyApp(),
     ),

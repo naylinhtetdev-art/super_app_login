@@ -1,14 +1,16 @@
-class StoryModel {
+class ChatModel {
   final String id;
   final String name;
   final String imageUrl;
   final bool isOnline;
 
-  StoryModel({
+  ChatModel({
     required this.id,
     required this.name,
     required this.imageUrl,
     this.isOnline = false,
+    required String avatarUrl,
+    required bool isAddStory,
   });
 }
 
