@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:super_app/providers/language_provider.dart';
 import 'package:super_app/providers/theme_provider.dart';
+import 'package:super_app/utils/app_language.dart';
 import 'package:super_app/utils/constants.dart';
 import 'package:super_app/view/chat_tap_screen.dart';
 import 'package:super_app/view/home_tap_screen.dart';
@@ -163,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = context.watch<LanguageProvider>();
     final themeProvider = context.watch<ThemeProvider>();
     final isDark = themeProvider.themeMode == ThemeMode.dark;
 
@@ -181,7 +185,6 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: drawerBgColor,
         width: MediaQuery.of(context).size.width * 0.9,
         child: Column(
-          // <--- Expanded ကို Column ထဲသို့ ထည့်သွင်းပေးထားပါသည်
           children: [
             Expanded(
               child: ListView(
@@ -239,7 +242,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: AppColors.primary,
                     ),
                     title: Text(
-                      'For You',
+                      //'For You',
+                      AppLocale.forYou.getString(context),
                       style: TextStyle(color: AppColors.primary),
                     ),
                     onTap: () => Navigator.pop(context),
@@ -247,14 +251,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ListTile(
                     leading: Icon(Icons.menu, color: textColor),
                     title: Text(
-                      'Following',
+                      //'Following',
+                      AppLocale.following.getString(context),
                       style: TextStyle(color: textColor),
                     ),
                     onTap: () {},
                   ),
                   ListTile(
                     leading: Icon(Icons.group, color: textColor),
-                    title: Text('Group', style: TextStyle(color: textColor)),
+                    title: Text(
+                      AppLocale.group.getString(context),
+                      style: TextStyle(color: textColor),
+                    ),
                     onTap: () {},
                   ),
                   ListTile(
@@ -263,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: textColor,
                     ),
                     title: Text(
-                      'Display Setting',
+                      AppLocale.displaySetting.getString(context),
                       style: TextStyle(color: textColor),
                     ),
                     onTap: () {
@@ -272,15 +280,40 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
+
                   ListTile(
                     leading: Icon(Icons.language_outlined, color: textColor),
-                    title: Text('Language', style: TextStyle(color: textColor)),
+                    title: Text(
+                      AppLocale.selectLanguage.getString(context),
+                      style: TextStyle(color: textColor),
+                    ),
+                    trailing: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: languageProvider.currentLanguage,
+                        icon: Icon(Icons.arrow_drop_down, color: textColor),
+                        dropdownColor: Theme.of(context).canvasColor,
+                        items: const [
+                          DropdownMenuItem(value: 'en', child: Text('English')),
+                          DropdownMenuItem(value: 'my', child: Text('မြန်မာ')),
+                        ],
+                        onChanged: (String? languageCode) {
+                          if (languageCode != null) {
+                            context.read<LanguageProvider>().changeLanguage(
+                              languageCode,
+                            );
+                            // FlutterLocalization.instance.translate(
+                            //   languageCode,
+                            // );
+                          }
+                        },
+                      ),
+                    ),
                     onTap: () {},
                   ),
                   ListTile(
                     leading: Icon(Icons.settings, color: textColor),
                     title: Text(
-                      'Account Setting',
+                      AppLocale.accountSetting.getString(context),
                       style: TextStyle(color: textColor),
                     ),
                     onTap: () {},
@@ -288,7 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ListTile(
                     leading: Icon(Icons.privacy_tip_sharp, color: textColor),
                     title: Text(
-                      'Terms & Privacy',
+                      AppLocale.termsPrivacy.getString(context),
                       style: TextStyle(color: textColor),
                     ),
                     onTap: () {},
@@ -325,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(width: 8.w),
                       Text(
-                        'Logout',
+                        AppLocale.logout.getString(context),
                         style: TextStyle(
                           color: Colors.redAccent,
                           fontSize: 15.sp,
@@ -356,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconTheme: IconThemeData(color: iconColor),
                 titleSpacing: 0,
                 title: Text(
-                  'OLLIO',
+                  AppLocale.appTitle.getString(context),
                   style: TextStyle(
                     color: AppColors.primary,
                     fontSize: 28.sp,
@@ -407,7 +440,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: AppColors.primary,
             ),
-            label: 'Home',
+            label: AppLocale.navHome.getString(context),
           ),
           NavigationDestination(
             icon: Image.asset(
@@ -422,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: AppColors.primary,
             ),
-            label: 'Quick',
+            label: AppLocale.navQuick.getString(context),
           ),
           NavigationDestination(
             icon: Image.asset(
@@ -437,7 +470,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: AppColors.primary,
             ),
-            label: 'Service',
+            label: AppLocale.navService.getString(context),
           ),
           NavigationDestination(
             icon: Image.asset(
@@ -452,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: AppColors.primary,
             ),
-            label: 'Chat',
+            label: AppLocale.navChat.getString(context),
           ),
           NavigationDestination(
             icon: Image.asset(
@@ -467,7 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 24.h,
               color: AppColors.primary,
             ),
-            label: 'Me',
+            label: AppLocale.navMe.getString(context),
           ),
         ],
       ),
